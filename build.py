@@ -92,7 +92,6 @@ def build_index():
         <div class="frame">
           <img class="main" src="img/thumbs/{im[0]}" alt="{html.escape(d['name'])} — {html.escape(d['line'])}" loading="lazy">
           {alt}
-          <span class="num">Nº {d['id']:02d}</span>
         </div>
         <div class="meta"><h3>{html.escape(d['name'])}</h3><span>View →</span></div>
       </a>''')
@@ -106,7 +105,7 @@ def build_index():
   <div class="hero-media"><img src="img/dresses/17-1.jpg" alt="" fetchpriority="high"></div>
   <div class="hero-content">
     <div class="eyebrow">Indian wear · Made by hand · Since 1995</div>
-    <h1>Patra<em>ani</em></h1>
+    <h1>Patraani</h1>
     <p class="lede">Fashion in its most cultivated form. A limited-edition assortment of Indian and Western wear, embroidered by hand in Civil Lines, Delhi — by three women and the karigars who have grown old with them.</p>
     <div class="hero-actions">
       <a class="btn" href="#collection">View the collection</a>
@@ -122,15 +121,15 @@ def build_index():
   <div class="wrap story-grid">
     <figure class="story-media reveal">
       <img src="img/dresses/14-1.jpg" alt="A Patraani kurta in blush linen with an ivory jacquard panel">
-      <div class="stamp"><div><b>31</b>years of<br>needle &amp; thread</div></div>
-      <figcaption>Whisper — Nº 14</figcaption>
+      <div class="stamp"><div><b>30</b>years of<br>needle &amp; thread</div></div>
+      <figcaption>Whisper</figcaption>
     </figure>
     <div class="story-text">
       <div class="eyebrow reveal">Our story</div>
       <h2 class="reveal" data-delay="1">It began in 1995, in a year that also gave the family <em>a daughter.</em></h2>
       <p class="first reveal" data-delay="1">Ritu Gupta had just graduated from NIFT Delhi, in a batch that would go on to shape Indian fashion — Pankaj &amp; Nidhi, Manish Arora, Abhishek Gupta. While her classmates chased runways, she chose the slower, quieter craft: Indian wear, made by hand, made to last. She called it Patraani.</p>
-      <p class="reveal" data-delay="2">When Ritu married, her sister Neena picked up the needle. For two decades she has held the label steady — through changing fashions and faithful customers — with the same stubborn devotion to detail: embroidery so fine you have to lean in to see it, fabrics chosen like heirlooms, and prices that never forgot the women who wore them.</p>
-      <div class="pull reveal" data-delay="2">“They come back because our garments are evergreen. A Patraani piece is not for a season. It is for a life.”<small>A customer of twenty-five years</small></div>
+      <p class="reveal" data-delay="2">When Ritu married, her sister Neena picked up the needle. For the better part of three decades she has held the label steady — through changing fashions and faithful customers — with the same stubborn devotion to detail: embroidery so fine you have to lean in to see it, fabrics chosen like heirlooms, and prices that never forgot the women who wore them.</p>
+      <div class="pull reveal" data-delay="2">“They come back because our garments are evergreen. A Patraani piece is not for a season. It is for a life.”<small>A customer of thirty years</small></div>
       <p class="reveal" data-delay="2">And then there was the daughter. Stuti was born the same year Patraani was, and she grew up on its floor — among bolts of fabric, trays of sequins, and the low hum of karigars at work. Fashion was never a career she chose; it was the house she grew up in. After graduating in Fashion Design she came home to her mother's table, and later built her own sub-label under the same roof.</p>
       <p class="reveal" data-delay="3">Today the three names are stitched into one. <span class="serif-i">Ri</span>tu. <span class="serif-i">Ne</span>ena. <span class="serif-i">Stu</span>ti.</p>
       <div class="ri-ne-stu reveal" data-delay="3"><b>Ri</b><span>·</span><b>Ne</b><span>·</span><b>Stu</b></div>
@@ -143,7 +142,7 @@ def build_index():
     <div class="value reveal"><div class="num">I</div><h3>Hand <em>embroidery</em></h3><p>Extremely delicate, intricate Indian embroidery, done by hand by karigars who have been with us for decades.</p></div>
     <div class="value reveal" data-delay="1"><div class="num">II</div><h3>Fabrics like <em>heirlooms</em></h3><p>Only the finest linens, cottons and silks — chosen to be worn for years, washed for years, loved for years.</p></div>
     <div class="value reveal" data-delay="2"><div class="num">III</div><h3>Original <em>design</em></h3><p>Traditional cuts with fine ornate embroidery; Western silhouettes with delicate, atypical detail. Nothing copied.</p></div>
-    <div class="value reveal" data-delay="3"><div class="num">IV</div><h3>Honest <em>pricing</em></h3><p>Finer workmanship than the market, at a price that has always stayed nominal. That is how you keep a customer for 25 years.</p></div>
+    <div class="value reveal" data-delay="3"><div class="num">IV</div><h3>Honest <em>pricing</em></h3><p>Finer workmanship than the market, at a price that has always stayed nominal. That is how you keep a customer for thirty years.</p></div>
   </div>
 </section>
 
@@ -151,7 +150,7 @@ def build_index():
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow reveal">The exhibition</div>
-      <h2 class="reveal" data-delay="1">Twenty-five pieces, <em>each with a name.</em></h2>
+      <h2 class="reveal" data-delay="1">The <em>Collection</em></h2>
       <p class="reveal" data-delay="2">A limited edition. Every garment is embroidered by hand and made in small numbers — when it's gone, it's gone. Click any piece to see it from every angle.</p>
     </div>
     <div class="grid">{''.join(cards)}
@@ -193,8 +192,8 @@ def build_index():
       <div class="person reveal" data-delay="1">
         <div class="photo"><img src="img/team/neena.jpg" alt="Neena Gupta" loading="lazy"></div>
         <h3>Neena Gupta</h3>
-        <div class="role">Keeper of the label</div>
-        <p>Took over from her sister and has run Patraani for over two decades — every karigar, every customer, every stitch.</p>
+        <div class="role">Designer &amp; Proprietor · Patraani</div>
+        <p>The hand that has guided Patraani for the better part of three decades. Took over from her sister and has led every collection since — knows every karigar by name, every customer by their wardrobe, and every stitch before it is made.</p>
       </div>
       <a class="person reveal" data-delay="2" href="stuti.html">
         <div class="photo"><img src="img/team/stuti.jpg" alt="Stuti Gupta" loading="lazy"></div>
@@ -241,16 +240,16 @@ def build_dresses():
         figs = ''.join(
             f'<figure><img src="../img/dresses/{f}" alt="{html.escape(d["name"])} — view {k + 1}"{" loading=\"lazy\"" if k else ""}></figure>'
             for k, f in enumerate(im))
-        wa_text = f"Hello! I saw '{d['name']}' (Nº {d['id']:02d}) on the Patraani website and would love to know more."
+        wa_text = f"Hello! I saw '{d['name']}' on the Patraani website and would love to know more."
         wa = f'https://wa.me/{WA_STUTI}?text=' + wa_text.replace(' ', '%20').replace("'", '%27').replace('!', '%21')
-        page = head(f'{d["name"]} — Nº {d["id"]:02d} · Patraani', d['line'], base='../') + header(base='../', solid=True) + f'''
+        page = head(f'{d["name"]} · Patraani', d['line'], base='../') + header(base='../', solid=True) + f'''
 <main class="dress-page">
   <div class="wrap">
-    <div class="crumbs"><a href="../index.html">Patraani</a> / <a href="../index.html#collection">The Collection</a> / <span>Nº {d['id']:02d}</span></div>
+    <div class="crumbs"><a href="../index.html">Patraani</a> / <a href="../index.html#collection">The Collection</a> / <span>{html.escape(d['name'])}</span></div>
     <div class="dress-layout">
       <div class="dress-gallery">{figs}</div>
       <aside class="dress-info">
-        <div class="num">Nº {d['id']:02d} of {n:02d}</div>
+        <div class="num">Patraani · The Collection</div>
         <h1>{html.escape(d['name'])}</h1>
         <p class="line">{html.escape(d['line'])}</p>
         <div class="facts">
@@ -298,7 +297,7 @@ def build_stuti():
     </div>
     <div class="profile-body">
       <p class="first reveal">Nineteen ninety-five was the year my aunt, Ritu, came home from NIFT Delhi and started a label. It was also the year I was born. So I grew up surrounded by it all — the fashion, the fabrics, the embellishments — the way other children grow up around a family shop or a family farm. The dining table was a cutting table. The karigars were uncles. A tray of sequins was as ordinary as a bowl of fruit.</p>
-      <p class="reveal">What I understood only later is how unusual the thing was that they were building. Our USP has always been extremely delicate, intricate Indian embroidery, done entirely by hand by our super-skilled embroiderers — men who have been with us longer than I have been alive. Our customers have stayed loyal for over twenty-five years, and when you ask them why, they say the same things: the garments are evergreen, the quality is exceptional, and the price is nothing like what the market asks for work that is, honestly, far coarser than ours.</p>
+      <p class="reveal">What I understood only later is how unusual the thing was that they were building. Our USP has always been extremely delicate, intricate Indian embroidery, done entirely by hand by our super-skilled embroiderers — men who have been with us longer than I have been alive. Our customers have stayed loyal for thirty years, and when you ask them why, they say the same things: the garments are evergreen, the quality is exceptional, and the price is nothing like what the market asks for work that is, honestly, far coarser than ours.</p>
       <h2 class="reveal">My mother's <em>table</em></h2>
       <p class="reveal">When my aunt got married, my mother, Neena, took over the label — and has run it ever since. I joined her soon after finishing my graduation in Fashion Design, to help with the designing. I like to say I joined the business; the truth is I simply came home and sat down at her table.</p>
       <h2 class="reveal">Ri · Ne · <em>Stu</em></h2>
