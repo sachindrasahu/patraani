@@ -153,9 +153,9 @@ def build_index():
 <section class="story" id="story">
   <div class="wrap story-grid">
     <figure class="story-media reveal">
-      <img src="img/dresses/14-1.jpg" alt="A Patraani kurta in blush linen with an ivory jacquard panel">
+      <img src="img/dresses/20-1.jpg" alt="A Patraani kurta in blush linen with an ivory jacquard panel">
       <div class="stamp"><div><b>30</b>years of<br>needle &amp; thread</div></div>
-      <figcaption>Whisper</figcaption>
+      <figcaption>Lullaby</figcaption>
     </figure>
     <div class="story-text">
       <div class="eyebrow reveal">Our story</div>
@@ -361,6 +361,16 @@ def build_stuti():
     open(os.path.join(ROOT, 'stuti.html'), 'w', encoding='utf-8').write(page)
 
 
+def prune():
+    """Delete dress pages whose entry is no longer in dresses.json."""
+    keep = {slug(d) + '.html' for d in DRESSES}
+    folder = os.path.join(ROOT, 'dresses')
+    for f in os.listdir(folder):
+        if f.endswith('.html') and f not in keep:
+            os.remove(os.path.join(folder, f))
+            print('removed stale page:', f)
+
+
 if __name__ == '__main__':
-    build_index(); build_dresses(); build_stuti()
+    build_index(); build_dresses(); build_stuti(); prune()
     print(f'Built index.html, stuti.html and {len(DRESSES)} dress pages.')
