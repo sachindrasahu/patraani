@@ -79,4 +79,60 @@
       sx = null;
     });
   }
+
+  // Size guide modal
+  var modal = document.getElementById('size-guide');
+  if (modal) {
+    var lastFocus = null;
+    function openModal(e) {
+      if (e) e.preventDefault();
+      lastFocus = document.activeElement;
+      modal.hidden = false;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      modal.querySelector('.size-close').focus();
+    }
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.hidden = true;
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    }
+    document.querySelectorAll('[data-size-guide]').forEach(function (t) {
+      t.addEventListener('click', openModal);
+    });
+    modal.querySelector('.size-close').addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+    if (location.hash === '#size-guide') openModal();
+  }
+
+  // Size picker -> WhatsApp order message
+  var order = document.querySelector('.order');
+  if (order) {
+    var btn = order.querySelector('.order-btn');
+    var dress = order.getAttribute('data-dress');
+    var phone = order.getAttribute('data-wa');
+    var chosen = null;
+    function updateLink() {
+      var msg = "Hello! I would like to order '" + dress + "' from the Patraani collection.";
+      if (chosen === 'Made to measure') {
+        msg += ' I would like it made to my measurements.';
+      } else if (chosen) {
+        msg += ' Size: ' + chosen + '.';
+      }
+      btn.href = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(msg);
+      btn.textContent = chosen ? 'Order ' + (chosen === 'Made to measure' ? 'made to measure' : 'size ' + chosen) : 'Order on WhatsApp';
+    }
+    order.querySelectorAll('.size-opt').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var already = b.classList.contains('selected');
+        order.querySelectorAll('.size-opt').forEach(function (o) { o.classList.remove('selected'); });
+        if (already) { chosen = null; } else { b.classList.add('selected'); chosen = b.getAttribute('data-size'); }
+        updateLink();
+      });
+    });
+  }
 })();

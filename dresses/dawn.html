@@ -37,9 +37,17 @@
           <div><span>Embroidery</span><span>By hand, in-house</span></div>
           <div><span>Studio</span><span>Civil Lines, Delhi</span></div>
         </div>
-        <div class="actions">
-          <a class="btn solid" href="https://wa.me/919312255642?text=Hello%21%20I%20saw%20%27Dawn%27%20on%20the%20Patraani%20website%20and%20would%20love%20to%20know%20more." target="_blank" rel="noopener">Enquire on WhatsApp</a>
-          <a class="btn dark" href="https://www.instagram.com/rinestuofficial/" target="_blank" rel="noopener">See more on Instagram</a>
+        <div class="order" data-dress="Dawn" data-wa="919312255642">
+          <div class="order-head">
+            <span class="order-label">Select a size</span>
+            <a href="#size-guide" data-size-guide class="size-link">Size guide</a>
+          </div>
+          <div class="size-picker" role="group" aria-label="Select a size"><button type="button" class="size-opt" data-size="XS">XS</button><button type="button" class="size-opt" data-size="S">S</button><button type="button" class="size-opt" data-size="M">M</button><button type="button" class="size-opt" data-size="L">L</button><button type="button" class="size-opt" data-size="XL">XL</button><button type="button" class="size-opt" data-size="XXL">XXL</button><button type="button" class="size-opt" data-size="Made to measure">Made to measure</button></div>
+          <div class="actions">
+            <a class="btn solid order-btn" href="https://wa.me/919312255642?text=Hello%21%20I%20would%20like%20to%20order%20%27Dawn%27%20from%20the%20Patraani%20collection." target="_blank" rel="noopener">Order on WhatsApp</a>
+            <a class="btn dark" href="https://www.instagram.com/rinestuofficial/" target="_blank" rel="noopener">See more on Instagram</a>
+          </div>
+          <p class="order-note">Orders and enquiries are answered personally by Stuti. Alterations and made-to-measure are available on every piece.</p>
         </div>
         <nav class="dress-nav">
           <a class="prev" href="whisper.html"><span>← Previous</span><b>Whisper</b></a>
@@ -65,10 +73,26 @@
     <div class="links">
       <a href="https://www.instagram.com/rinestuofficial/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://wa.me/919312255642" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="#size-guide" data-size-guide>Size Guide</a>
       <a href="../index.html#collection">Collection</a>
     </div>
   </div>
 </footer>
+<div class="size-modal" id="size-guide" role="dialog" aria-modal="true" aria-label="Size guide" hidden>
+  <div class="size-panel">
+    <button class="size-close" aria-label="Close">&#10005;</button>
+    <div class="eyebrow">Size guide</div>
+    <h2>Finding <em>your size</em></h2>
+    <p class="size-intro">All measurements are body measurements, in inches. Every garment is cut with comfortable ease over these. If you are between sizes, or would like a piece made to your own measurements, simply tell us on WhatsApp &mdash; almost everything we make can be altered or made to order at no extra cost.</p>
+    <div class="size-table-wrap">
+      <table class="size-table"><thead><tr><th>Size</th><th>Bust</th><th>Waist</th><th>Hip</th></tr></thead><tbody><tr><td>XS</td><td>32</td><td>26</td><td>35</td></tr><tr><td>S</td><td>34</td><td>28</td><td>37</td></tr><tr><td>M</td><td>36</td><td>30</td><td>39</td></tr><tr><td>L</td><td>38</td><td>32</td><td>41</td></tr><tr><td>XL</td><td>40</td><td>34</td><td>43</td></tr><tr><td>XXL</td><td>42</td><td>36</td><td>45</td></tr></tbody></table>
+    </div>
+    <h3>How to measure</h3>
+    <dl class="size-howto"><div><dt>Bust</dt><dd>Around the fullest part of the bust, tape level and not pulled tight.</dd></div><div><dt>Waist</dt><dd>Around the narrowest part of the natural waist, just above the navel.</dd></div><div><dt>Hip</dt><dd>Around the fullest part of the hips, roughly 8 inches below the waist.</dd></div></dl>
+    <p class="size-foot">Still unsure? Send us your usual size in any brand you wear often, and we will match it.</p>
+  </div>
+</div>
+
 <script src="../js/main.js"></script>
 </body>
 </html>

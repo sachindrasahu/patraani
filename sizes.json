@@ -1,0 +1,17 @@
+{
+  "note": "Measurements are body measurements in inches. Garments are cut with ease over these. Edit this file and re-run build.py to change the chart.",
+  "columns": ["Size", "Bust", "Waist", "Hip"],
+  "rows": [
+    ["XS", "32", "26", "35"],
+    ["S",  "34", "28", "37"],
+    ["M",  "36", "30", "39"],
+    ["L",  "38", "32", "41"],
+    ["XL", "40", "34", "43"],
+    ["XXL","42", "36", "45"]
+  ],
+  "howto": [
+    ["Bust", "Around the fullest part of the bust, tape level and not pulled tight."],
+    ["Waist", "Around the narrowest part of the natural waist, just above the navel."],
+    ["Hip", "Around the fullest part of the hips, roughly 8 inches below the waist."]
+  ]
+}

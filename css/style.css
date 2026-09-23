@@ -105,7 +105,10 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.1; 
     font-size: 15px; transform: translateY(-100%); transition: transform .45s cubic-bezier(.77,0,.18,1);
   }
   .nav.open { transform: translateY(0); }
-  .site-header.menu-open { color: var(--ivory); background: transparent; box-shadow: none; }
+  /* backdrop-filter on the header would make it the containing block for the
+     fixed nav overlay, clipping it to the header's height — drop it while open */
+  .site-header.menu-open { color: var(--ivory); background: transparent; box-shadow: none;
+    backdrop-filter: none; -webkit-backdrop-filter: none; }
   .site-header.menu-open .nav-toggle { position: relative; z-index: 2; }
   .site-header.menu-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .site-header.menu-open .nav-toggle span:nth-child(2) { opacity: 0; }
@@ -377,4 +380,70 @@ footer .links { display: flex; gap: 26px; font-size: 11px; letter-spacing: .24em
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .hero-media img, .ticker-track, .story-media .stamp { animation: none; }
+}
+
+/* ---------- Order block (dress page) ---------- */
+.order { margin-top: 34px; }
+.order-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
+.order-label { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--muted); }
+.size-link { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--maroon); border-bottom: 1px solid var(--gold-soft); padding-bottom: 2px; cursor: pointer; }
+.size-link:hover { border-color: var(--maroon); }
+.size-picker { display: flex; flex-wrap: wrap; gap: 8px; }
+.size-opt {
+  font-family: var(--sans); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 300;
+  padding: 11px 16px; min-width: 52px; background: none; cursor: pointer;
+  border: 1px solid var(--line); color: var(--ink-soft);
+  transition: border-color .25s, background .25s, color .25s;
+}
+.size-opt:hover { border-color: var(--maroon); color: var(--maroon); }
+.size-opt.selected { background: var(--ink); border-color: var(--ink); color: var(--ivory); }
+.order .actions { margin-top: 22px; }
+.order-note { margin-top: 16px; font-size: 13px; line-height: 1.6; color: var(--muted); }
+
+/* ---------- Size guide modal ---------- */
+.size-modal { position: fixed; inset: 0; z-index: 120; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(20,12,10,.6); backdrop-filter: blur(3px); }
+.size-modal.open { display: flex; }
+.size-panel {
+  position: relative; background: var(--paper); max-width: 640px; width: 100%; max-height: 88vh; overflow-y: auto;
+  padding: clamp(28px, 5vw, 52px); border: 1px solid var(--line); box-shadow: 0 40px 90px rgba(0,0,0,.28);
+}
+.size-close { position: absolute; top: 14px; right: 14px; background: none; border: 0; font-size: 15px; color: var(--muted); cursor: pointer; padding: 10px; line-height: 1; }
+.size-close:hover { color: var(--maroon); }
+.size-panel h2 { font-size: clamp(32px, 4vw, 44px); margin: 14px 0 18px; }
+.size-panel h2 em { font-style: italic; color: var(--maroon); }
+.size-panel h3 { font-size: 24px; margin: 34px 0 14px; }
+.size-intro { font-size: 15px; color: var(--ink-soft); }
+.size-table-wrap { margin-top: 24px; overflow-x: auto; }
+.size-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 340px; }
+.size-table th, .size-table td { padding: 12px 10px; text-align: left; border-bottom: 1px solid var(--line); }
+.size-table th { font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+.size-table td { font-family: var(--serif); font-size: 19px; }
+.size-table tbody tr:hover { background: var(--sand); }
+.size-howto { display: grid; gap: 14px; }
+.size-howto dt { font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--maroon); margin-bottom: 3px; }
+.size-howto dd { font-size: 15px; color: var(--ink-soft); }
+.size-foot { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+
+/* ---------- Floating WhatsApp ---------- */
+.wa-float {
+  position: fixed; right: 20px; bottom: 20px; z-index: 90;
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--maroon); color: var(--ivory); padding: 13px 20px;
+  font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+  box-shadow: 0 10px 30px rgba(90,26,39,.32); transition: background .3s, transform .3s;
+}
+.wa-float:hover { background: var(--maroon-deep); transform: translateY(-2px); }
+.wa-float svg { width: 19px; height: 19px; flex: none; }
+@media (max-width: 640px) {
+  .wa-float { right: 14px; bottom: 14px; padding: 14px; border-radius: 50%; }
+  .wa-float span { display: none; }
+  .wa-float svg { width: 22px; height: 22px; }
+}
+@media print { .wa-float, .site-header { display: none; } }
+@media (max-width: 520px) {
+  .size-panel { padding: 30px 20px; }
+  .size-table { min-width: 0; }
+  .size-table th, .size-table td { padding: 11px 4px; }
+  .size-table td { font-size: 17px; }
+  .size-table th { letter-spacing: .12em; }
 }

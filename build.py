@@ -3,10 +3,12 @@
 Run `python build.py` after adding dresses (see README.md).
 """
 import json, os, html
+from urllib.parse import quote
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DRESSES = json.load(open(os.path.join(ROOT, 'dresses.json'), encoding='utf-8'))
 MANIFEST = json.load(open(os.path.join(ROOT, 'img', 'manifest.json')))
+SIZES = json.load(open(os.path.join(ROOT, 'sizes.json'), encoding='utf-8'))
 
 IG = 'https://www.instagram.com/rinestuofficial/'
 WA_STUTI = '919312255642'
@@ -54,7 +56,7 @@ def header(base='', solid=False):
 </header>'''
 
 
-def footer(base=''):
+def footer(base='', floating=True):
     return f'''<footer>
   <div class="wrap">
     <div>
@@ -64,13 +66,44 @@ def footer(base=''):
     <div class="links">
       <a href="{IG}" target="_blank" rel="noopener">Instagram</a>
       <a href="https://wa.me/{WA_STUTI}" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="#size-guide" data-size-guide>Size Guide</a>
       <a href="{base}index.html#collection">Collection</a>
     </div>
   </div>
 </footer>
+{size_modal()}
+{float_wa(base) if floating else ''}
 <script src="{base}js/main.js"></script>
 </body>
 </html>'''
+
+
+def size_modal():
+    cols = ''.join(f'<th>{html.escape(c)}</th>' for c in SIZES['columns'])
+    rows = ''.join('<tr>' + ''.join(f'<td>{html.escape(c)}</td>' for c in r) + '</tr>' for r in SIZES['rows'])
+    howto = ''.join(f'<div><dt>{html.escape(a)}</dt><dd>{html.escape(b)}</dd></div>' for a, b in SIZES['howto'])
+    return f'''<div class="size-modal" id="size-guide" role="dialog" aria-modal="true" aria-label="Size guide" hidden>
+  <div class="size-panel">
+    <button class="size-close" aria-label="Close">&#10005;</button>
+    <div class="eyebrow">Size guide</div>
+    <h2>Finding <em>your size</em></h2>
+    <p class="size-intro">All measurements are body measurements, in inches. Every garment is cut with comfortable ease over these. If you are between sizes, or would like a piece made to your own measurements, simply tell us on WhatsApp &mdash; almost everything we make can be altered or made to order at no extra cost.</p>
+    <div class="size-table-wrap">
+      <table class="size-table"><thead><tr>{cols}</tr></thead><tbody>{rows}</tbody></table>
+    </div>
+    <h3>How to measure</h3>
+    <dl class="size-howto">{howto}</dl>
+    <p class="size-foot">Still unsure? Send us your usual size in any brand you wear often, and we will match it.</p>
+  </div>
+</div>'''
+
+
+def float_wa(base=''):
+    msg = 'Hello! I would like to order from the Patraani collection.'
+    return (f'<a class="wa-float" href="https://wa.me/{WA_STUTI}?text=' + quote(msg) +
+            '" target="_blank" rel="noopener" aria-label="Order on WhatsApp">'
+            '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1s-.8 1-.9 1.2c-.2.2-.3.2-.6.1a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.3 5.2 4.6.7.3 1.3.5 1.8.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>'
+            '<span>Order on WhatsApp</span></a>')
 
 
 def imgs(d):
@@ -127,7 +160,7 @@ def build_index():
     <div class="story-text">
       <div class="eyebrow reveal">Our story</div>
       <h2 class="reveal" data-delay="1">It began in 1995, in a year that also gave the family <em>a daughter.</em></h2>
-      <p class="first reveal" data-delay="1">Ritu Gupta had just graduated from NIFT Delhi, in a batch that would go on to shape Indian fashion — Pankaj &amp; Nidhi, Manish Arora, Abhishek Gupta. While her classmates chased runways, she chose the slower, quieter craft: Indian wear, made by hand, made to last. She called it Patraani.</p>
+      <p class="first reveal" data-delay="1">Ritu Gupta had just graduated from NIFT Delhi, from a batch that would go on to shape Indian fashion for the next thirty years. While her classmates chased the runways, she chose the slower, quieter craft: Indian wear, made by hand, made to last. She set up a workshop, found her karigars, and called it Patraani.</p>
       <p class="reveal" data-delay="2">When Ritu married, her sister Neena picked up the needle. For the better part of three decades she has held the label steady — through changing fashions and faithful customers — with the same stubborn devotion to detail: embroidery so fine you have to lean in to see it, fabrics chosen like heirlooms, and prices that never forgot the women who wore them.</p>
       <div class="pull reveal" data-delay="2">“They come back because our garments are evergreen. A Patraani piece is not for a season. It is for a life.”<small>A customer of thirty years</small></div>
       <p class="reveal" data-delay="2">And then there was the daughter. Stuti was born the same year Patraani was, and she grew up on its floor — among bolts of fabric, trays of sequins, and the low hum of karigars at work. Fashion was never a career she chose; it was the house she grew up in. After graduating in Fashion Design she came home to her mother's table, and later built her own sub-label under the same roof.</p>
@@ -240,8 +273,11 @@ def build_dresses():
         figs = ''.join(
             f'<figure><img src="../img/dresses/{f}" alt="{html.escape(d["name"])} — view {k + 1}"{" loading=\"lazy\"" if k else ""}></figure>'
             for k, f in enumerate(im))
-        wa_text = f"Hello! I saw '{d['name']}' on the Patraani website and would love to know more."
-        wa = f'https://wa.me/{WA_STUTI}?text=' + wa_text.replace(' ', '%20').replace("'", '%27').replace('!', '%21')
+        size_buttons = ''.join(
+            f'<button type="button" class="size-opt" data-size="{r[0]}">{r[0]}</button>'
+            for r in SIZES['rows']) + '<button type="button" class="size-opt" data-size="Made to measure">Made to measure</button>'
+        wa_text = f"Hello! I would like to order '{d['name']}' from the Patraani collection."
+        wa = f'https://wa.me/{WA_STUTI}?text=' + quote(wa_text)
         page = head(f'{d["name"]} · Patraani', d['line'], base='../') + header(base='../', solid=True) + f'''
 <main class="dress-page">
   <div class="wrap">
@@ -257,9 +293,17 @@ def build_dresses():
           <div><span>Embroidery</span><span>By hand, in-house</span></div>
           <div><span>Studio</span><span>Civil Lines, Delhi</span></div>
         </div>
-        <div class="actions">
-          <a class="btn solid" href="{wa}" target="_blank" rel="noopener">Enquire on WhatsApp</a>
-          <a class="btn dark" href="{IG}" target="_blank" rel="noopener">See more on Instagram</a>
+        <div class="order" data-dress="{html.escape(d['name'])}" data-wa="{WA_STUTI}">
+          <div class="order-head">
+            <span class="order-label">Select a size</span>
+            <a href="#size-guide" data-size-guide class="size-link">Size guide</a>
+          </div>
+          <div class="size-picker" role="group" aria-label="Select a size">{size_buttons}</div>
+          <div class="actions">
+            <a class="btn solid order-btn" href="{wa}" target="_blank" rel="noopener">Order on WhatsApp</a>
+            <a class="btn dark" href="{IG}" target="_blank" rel="noopener">See more on Instagram</a>
+          </div>
+          <p class="order-note">Orders and enquiries are answered personally by Stuti. Alterations and made-to-measure are available on every piece.</p>
         </div>
         <nav class="dress-nav">
           <a class="prev" href="{slug(prev_d)}.html"><span>← Previous</span><b>{html.escape(prev_d['name'])}</b></a>
@@ -276,7 +320,7 @@ def build_dresses():
   <button class="next" aria-label="Next">›</button>
   <div class="count"></div>
 </div>
-''' + footer(base='../')
+''' + footer(base='../', floating=False)
         open(os.path.join(ROOT, 'dresses', slug(d) + '.html'), 'w', encoding='utf-8').write(page)
 
 
