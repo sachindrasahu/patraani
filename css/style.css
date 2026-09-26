@@ -148,6 +148,13 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.1; 
   text-transform: uppercase;
 }
 .hero h1 em { font-style: italic; text-transform: none; letter-spacing: 0; font-weight: 300; }
+.hero-logo { margin: 0; line-height: 0; }
+.hero-logo img {
+  width: clamp(190px, 26vw, 330px); height: auto;
+  filter: drop-shadow(0 6px 26px rgba(0, 0, 0, .55));
+  animation: markIn 1.4s cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes markIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 .hero p.lede {
   margin-top: 26px;
   max-width: 560px;
@@ -252,9 +259,11 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
 /* Rinestu band */
 .rinestu { background: var(--maroon-deep); color: var(--ivory); position: relative; overflow: hidden; }
 .rinestu::before {
-  content: 'RINESTU'; position: absolute; right: -2vw; top: 50%; transform: translateY(-50%);
-  font-family: var(--serif); font-size: clamp(120px, 26vw, 420px); letter-spacing: .04em; color: rgba(255,255,255,.035); pointer-events: none; line-height: 1;
+  content: ''; position: absolute; right: -6vw; top: 50%; transform: translateY(-50%);
+  width: clamp(320px, 46vw, 620px); aspect-ratio: 1; opacity: .045; pointer-events: none;
+  background: url('../img/rinestu-logo-light.png') center / contain no-repeat;
 }
+.rinestu-mark { width: clamp(84px, 9vw, 116px); height: auto; margin-bottom: 26px; opacity: .95; }
 .rinestu .wrap { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 90px); align-items: center; }
 .rinestu .eyebrow { color: var(--gold-soft); }
 .rinestu .eyebrow::before { background: var(--gold-soft); }

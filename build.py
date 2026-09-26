@@ -87,7 +87,7 @@ def size_modal():
     <button class="size-close" aria-label="Close">&#10005;</button>
     <div class="eyebrow">Size guide</div>
     <h2>Finding <em>your size</em></h2>
-    <p class="size-intro">All measurements are body measurements, in inches. Every garment is cut with comfortable ease over these. If you are between sizes, or would like a piece made to your own measurements, simply tell us on WhatsApp &mdash; almost everything we make can be altered or made to order at no extra cost.</p>
+    <p class="size-intro">All measurements are body measurements, in inches. Every garment is cut with comfortable ease over these. If you are between sizes, or would like a piece made to your own measurements, simply tell us on WhatsApp — almost everything we make can be altered or made to order at no extra cost.</p>
     <div class="size-table-wrap">
       <table class="size-table"><thead><tr>{cols}</tr></thead><tbody>{rows}</tbody></table>
     </div>
@@ -138,7 +138,7 @@ def build_index():
   <div class="hero-media"><img src="img/dresses/17-1.jpg" alt="" fetchpriority="high"></div>
   <div class="hero-content">
     <div class="eyebrow">Indian wear · Made by hand · Since 1995</div>
-    <h1>Patraani</h1>
+    <h1 class="hero-logo"><img src="img/rinestu-logo-light.png" alt="Rinestu" width="900" height="900" fetchpriority="high"></h1>
     <p class="lede">Fashion in its most cultivated form. A limited-edition assortment of Indian and Western wear, embroidered by hand in Civil Lines, Delhi — by three women and the karigars who have grown old with them.</p>
     <div class="hero-actions">
       <a class="btn" href="#collection">View the collection</a>
@@ -154,7 +154,7 @@ def build_index():
   <div class="wrap story-grid">
     <figure class="story-media reveal">
       <img src="img/dresses/20-1.jpg" alt="A Patraani kurta in blush linen with an ivory jacquard panel">
-      <div class="stamp"><div><b>30</b>years of<br>needle &amp; thread</div></div>
+      <div class="stamp"><div><b>30</b>years of<br>needle and thread</div></div>
       <figcaption>Lullaby</figcaption>
     </figure>
     <div class="story-text">
@@ -194,6 +194,7 @@ def build_index():
 <section class="rinestu" id="rinestu">
   <div class="wrap">
     <div>
+      <img class="rinestu-mark reveal" src="img/rinestu-logo-light.png" alt="" width="900" height="900" loading="lazy">
       <div class="eyebrow reveal">The sub-label</div>
       <h2 class="reveal" data-delay="1">Rinestu — a younger hand, <em>the same old heart.</em></h2>
       <p class="reveal" data-delay="2">Founded by Stuti under the Patraani roof, Rinestu brings the label's eye for detail to intricate machine embroidery — executed by our own karigars, with the same fabrics, the same finish and the same refusal to compromise.</p>
@@ -225,7 +226,7 @@ def build_index():
       <div class="person reveal" data-delay="1">
         <div class="photo"><img src="img/team/neena.jpg" alt="Neena Gupta" loading="lazy"></div>
         <h3>Neena Gupta</h3>
-        <div class="role">Designer &amp; Proprietor · Patraani</div>
+        <div class="role">Designer and proprietor, Patraani</div>
         <p>The hand that has guided Patraani for the better part of three decades. Took over from her sister and has led every collection since — knows every karigar by name, every customer by their wardrobe, and every stitch before it is made.</p>
       </div>
       <a class="person reveal" data-delay="2" href="stuti.html">
@@ -326,7 +327,7 @@ def build_dresses():
 
 # ---------------------------------------------------------------- stuti.html
 def build_stuti():
-    page = head('Stuti Gupta — Designer · Patraani & Rinestu',
+    page = head('Stuti Gupta — Designer at Patraani and Rinestu',
                 'Born the year Patraani was founded, Stuti Gupta grew up among fabric and embroidery. She now designs for Patraani and leads her own sub-label, Rinestu.') + header(solid=True) + f'''
 <main class="profile-page">
   <div class="wrap">
@@ -335,7 +336,7 @@ def build_stuti():
       <div>
         <div class="eyebrow reveal">The women · Stuti</div>
         <h1 class="reveal" data-delay="1">Stuti <em>Gupta</em></h1>
-        <div class="role reveal" data-delay="1">Designer, Patraani · Founder, Rinestu</div>
+        <div class="role reveal" data-delay="1">Designer at Patraani, founder of Rinestu</div>
         <p class="intro reveal" data-delay="2">“Patraani and I were born in the same year. I have never known a home without fabric in it.”</p>
       </div>
     </div>
